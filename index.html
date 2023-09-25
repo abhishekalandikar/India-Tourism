@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Dashboard with Google Charts API and D3.js</title>
+  <!-- Include the Google Charts API library -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script type="text/javascript">
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {'packages':['corechart']});
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // Callback function to draw the charts.
+    function drawCharts() {
+      // Create data for the pie chart.
+      var pieData = google.visualization.arrayToDataTable([
+         ['Name of Cities', 'Tourist'],
+          ['Mumbai', 7.46],
+          ['Chennai.', 2.77],
+          ['Bangalore',3.31 ],
+          [' Hyderabad',2.96],
+          ['Ahmedabad',   2.00]
+      ]);
+
+      // Create data for the bar chart.
+      var barData = google.visualization.arrayToDataTable([
+        ['Name of States', 'Guests'],
+        ['Maharashtra ', 4],
+        ['Tamil Nadu', 2.2],
+        ['Karnataka', 1.8],
+        ['Andhra Pradesh', 2.0],
+        ['Gujarat', 3.5]
+      ]);
+
+      // Create data for the line chart.
+      var lineData = google.visualization.arrayToDataTable([
+        ['Month', 'Tourist'],
+        ['Jan', 10000],
+        ['Feb', 15000],
+        ['Mar', 20000],
+        ['Apr', 12000],
+        ['May', 30000],
+        ['june', 42000],
+        ['July', 20000],
+        ['Aug', 21000],
+        ['Sep', 25000],
+        ['Oct', 26000],
+        ['Nov', 18000],
+        ['Dec', 20000]
+      ]);
+
+      // Create options for the pie chart.
+      var pieOptions = {
+        title: 'Top 5 Cities Visit',
+        pieHole: 0.5
+      };
+
+      // Create options for the bar chart.
+      var barOptions = {
+        title: 'Top 5 States Visit'
+      };
+
+      // Create options for the line chart.
+      var lineOptions = {
+        title: 'Month-wise visits ',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+      };
+
+      // Instantiate and draw the pie chart and bar chart.
+      var pieChart = new google.visualization.PieChart(document.getElementById('pie-chart'));
+      pieChart.draw(pieData, pieOptions);
+
+      var barChart = new google.visualization.BarChart(document.getElementById('bar-chart'));
+      barChart.draw(barData, barOptions);
+
+      // Instantiate and draw the line chart.
+      var lineChart = new google.visualization.LineChart(document.getElementById('line-chart'));
+      lineChart.draw(lineData, lineOptions);
+
+    }
+
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 30px;
+    }
+    #charts-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .chart {
+      width: 700px;
+      height: 400px;
+      margin: 12px;
+    }
+    .description {
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>India Tourism Web Page</h1>
+  <div id="charts-container">
+    <div class="chart" id="pie-chart"></div>
+    <div class="chart" id="bar-chart"></div>
+    <div class="chart" id="line-chart"></div>
+  </div>
+</body>
+</html>
+
+
+
+
+from PIL import Image
